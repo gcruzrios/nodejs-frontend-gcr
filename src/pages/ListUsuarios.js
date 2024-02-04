@@ -1,12 +1,10 @@
 import React from "react";
-
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import UsuariosList from "../components/UsuariosList";
 
-import FormContacto from "../components/FormContacto";
-
-const EditContacto = () => {
+const ListUsuarios = () => {
   return (
     <div>
       <div className="wrapper">
@@ -14,7 +12,7 @@ const EditContacto = () => {
 
         <div className="main">
           <Header />
-          <FormContacto />
+          <UsuariosList/>
 
           <Footer />
         </div>
@@ -23,4 +21,4 @@ const EditContacto = () => {
   );
 };
 
-export default EditContacto;
+export default ListUsuarios;

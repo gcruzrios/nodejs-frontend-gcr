@@ -1,26 +1,24 @@
-import React from "react";
-
+import React from 'react'
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ContentMain from "../components/ContentMain";
 
-import FormContacto from "../components/FormContacto";
-
-const EditContacto = () => {
+const ListEmpresas = () => {
   return (
     <div>
-      <div className="wrapper">
+        <div className="wrapper">
         <Sidebar />
 
         <div className="main">
           <Header />
-          <FormContacto />
+          <ContentMain/>
 
           <Footer />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EditContacto;
+export default ListEmpresas

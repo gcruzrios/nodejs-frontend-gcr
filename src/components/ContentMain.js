@@ -87,7 +87,7 @@ const ContentMain = () => {
 									</thead>
 									<tbody>
                     {empresas.map((empresa) => ( 
-										<tr>
+										<tr  key={empresa._id}>
 											<td>{empresa.nombre}</td>
 											<td>{empresa.telefono}</td>
 											<td class="d-none d-md-table-cell">{empresa.pais}</td>

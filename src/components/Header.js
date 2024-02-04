@@ -39,7 +39,9 @@ const Header = () => {
               >
                 <div className="position-relative">
                   <i className="align-middle" data-feather="bell"></i>
-                  <span className="indicator">4</span>
+                  <h4 className="text-dark">Notifications</h4>
+
+                  {/* <span className="indicator">4</span> */}
                 </div>
               </a>
               <div
@@ -124,6 +126,7 @@ const Header = () => {
               >
                 <div className="position-relative">
                   <i className="align-middle" data-feather="message-square"></i>
+                   <h4 className="text-dark">Mensajes</h4>
                 </div>
               </a>
               <div

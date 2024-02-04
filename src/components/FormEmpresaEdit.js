@@ -1,23 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import FormAddEmpresa from "./FormAddEmpresa";
 import FormEditEmpresa from "./FormEditEmpresa";
-import { Route, Link, Routes, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const FormEmpresaEdit = () => {
 
-  // const [isEdit, setIsEdit] = useState(false);
-  // const location = useLocation();
-  // console.log(location);
+ 
+
+  const location = useLocation();
+  console.log(location.pathname);
   
-  // if (location.pathname ==="/addempresa"){
-  //   setIsEdit(true)
-
-  // }else{
-  //   setIsEdit(false)
-  // }
-
-  return (
+   return (
     <div>
       <main className="content">
         <div className="container-fluid p-0">
@@ -26,8 +20,8 @@ const FormEmpresaEdit = () => {
           </div>
           <div className="row">
             <div className="col-12 col-lg-8">
-            <FormEditEmpresa /> 
-            {/* {isEdit ? <FormAddEmpresa /> : <FormEditEmpresa />}   */}
+            {/* <FormEditEmpresa />  */}
+            {location.pathname ==="/addempresa"? <FormAddEmpresa /> : <FormEditEmpresa />}   
               
             </div>
           </div>

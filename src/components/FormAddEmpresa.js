@@ -81,8 +81,10 @@ const FormAddEmpresa = () => {
             <option value="Tecnologias">Tecnologías</option>
             <option value="Comercial">Comercio</option>
             <option value="Salud">Salud</option>
-            <option value="Servicos Publicos">Servicios Públicos</option>
+            <option value="Servicios Publicos">Servicios Públicos</option>
             <option value="Pymes">Pymes</option>
+            <option value="Turismo">Turismo</option>
+            <option value="Medio Ambiente">Medio Ambiente</option>
             <option value="Startups">Startups</option>
           </select>
         </div>

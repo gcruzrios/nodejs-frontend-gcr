@@ -83,7 +83,7 @@ const FormEditEmpresa = () => {
           <input type="text" className="form-control" placeholder="Telefóno" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
         </div>
         <div className="card-body">
-          <select className="form-select mb-3" onChange={(e) => setPais(e.target.value)}>
+          <select className="form-select mb-3" value={pais} onChange={(e) => setPais(e.target.value)}>
             <option selected>Escoga el País</option>
             <option value="Guatemala">Guatemala</option>
             <option value="Honduras">Honduras</option>
@@ -98,15 +98,17 @@ const FormEditEmpresa = () => {
           </select>
         </div>
         <div className="card-body">
-          <select className="form-select mb-3" onChange={(e) => setSector(e.target.value)}>
+          <select className="form-select mb-3" value={sector} onChange={(e) => setSector(e.target.value)}>
             <option selected>Escoga el Sector</option>
             <option value="Agricultura">Agrícola</option>
             <option value="Energia">Energías</option>
             <option value="Tecnologias">Tecnologías</option>
             <option value="Comercial">Comercio</option>
             <option value="Salud">Salud</option>
-            <option value="Servicos Publicos">Servicios Públicos</option>
+            <option value="Servicios Publicos">Servicios Públicos</option>
             <option value="Pymes">Pymes</option>
+            <option value="Turismo">Turismo</option>
+            <option value="Medio Ambiente">Medio Ambiente</option>
             <option value="Startups">Startups</option>
           </select>
         </div>

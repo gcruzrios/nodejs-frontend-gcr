@@ -9,6 +9,13 @@ import NotFound from './pages/Error404';
 import AddEmpresa from './pages/AddEmpresa';
 import EditEmpresa from './pages/EditEmpresa';
 import Blank from './pages/Blank';
+import ListEmpresas from './pages/ListEmpresas';
+import ListContactos from './pages/ListContactos';
+import ListUsuarios from './pages/ListUsuarios';
+import AddContacto from './pages/AddContacto';
+import EditContacto from './pages/EditContacto';
+import AddUsuario from './pages/AddUsuario';
+import EditUsuario from './pages/EditUsuario';
 
 function App() {
   return (
@@ -27,12 +34,35 @@ function App() {
           <Route path="/register" element={<Register/>} exact>
             {" "}
           </Route>
+          <Route path="/empresas" element={<ListEmpresas/>} exact>
+            {" "}
+          </Route> 
           <Route path="/addempresa" element={<AddEmpresa />} exact>
             {" "}
           </Route> 
           <Route path="/editempresa/:id" element={<EditEmpresa />} exact>
             {" "}
           </Route> 
+          <Route path="/contactos" element={<ListContactos/>} exact>
+            {" "}
+          </Route> 
+          <Route path="/addcontacto" element={<AddContacto />} exact>
+            {" "}
+          </Route>
+          <Route path="/editcontacto/:id" element={<EditContacto />} exact>
+            {" "}
+          </Route> 
+          <Route path="/usuarios" element={<ListUsuarios/>} exact>
+            {" "}
+          </Route> 
+          <Route path="/addusuario" element={<AddUsuario/>} exact>
+            {" "}
+          </Route>
+          <Route path="/editusuario/:id" element={<EditUsuario/>} exact>
+            {" "}
+          </Route>
+
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
