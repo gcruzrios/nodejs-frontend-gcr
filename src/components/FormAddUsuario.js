@@ -9,6 +9,7 @@ const FormAddUsuario = () => {
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [telefono, setTelefono] = useState("");
+    const [password, setPassword] = useState("");
     const [role, setRole] = useState("");
     
     
@@ -20,7 +21,7 @@ const FormAddUsuario = () => {
     const handleAdd = async (e) => {
         e.preventDefault();
     
-        const usuario = { nombre, email, telefono, role };
+        const usuario = { nombre, email, telefono, password, role };
     
         console.log(usuario);
     
@@ -56,6 +57,9 @@ const FormAddUsuario = () => {
         </div>
         <div className="card-body">
           <input type="text" className="form-control" placeholder="Telefóno" onChange={(e) => setTelefono(e.target.value)} />
+        </div>
+        <div className="card-body">
+          <input type="password" className="form-control" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div className="card-body">
           <select className="form-select mb-3" onChange={(e) => setRole(e.target.value)}>
