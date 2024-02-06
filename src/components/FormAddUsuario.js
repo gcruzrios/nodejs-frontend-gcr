@@ -13,12 +13,7 @@ const FormAddUsuario = () => {
     const [role, setRole] = useState("");
     
     
-    
-    
-
-
-
-    const handleAdd = async (e) => {
+   const handleAdd = async (e) => {
         e.preventDefault();
     
         const usuario = { nombre, email, telefono, password, role };
