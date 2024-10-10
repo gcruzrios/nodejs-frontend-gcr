@@ -70,7 +70,8 @@ const EmpleadoList = () => {
 								<div class="card-header">
 									<h5 class="card-title">Empleados registrados</h5>
 									
-                    <Link to="/addempleado" className="btn btn-primary float-end">Agregar Empleado</Link>
+                    <Link to={`/addempleado`} className="btn btn-primary float-end">Agregar Empleado</Link>
+                  
                 
 								</div>
 								<table class="table table-striped">
