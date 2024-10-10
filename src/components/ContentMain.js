@@ -71,7 +71,15 @@ const ContentMain = () => {
                 <tbody>
                   {empresas.map((empresa) => (
                     <tr key={empresa._id}>
-                      <td>{empresa.nombre}</td>
+                      <td>
+
+                      <Link
+                          to={`/empleados/${empresa._id}`}
+                          
+                        >
+                          {empresa.nombre}
+                        </Link>
+                      </td>
                       <td>{empresa.telefono}</td>
                       <td>{empresa.email}</td>
                       <td class="d-none d-md-table-cell">{empresa.pais}</td>

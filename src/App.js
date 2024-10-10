@@ -12,6 +12,12 @@ import Blank from './pages/Blank';
 import ListEmpresas from './pages/ListEmpresas';
 import ListContactos from './pages/ListContactos';
 import ListUsuarios from './pages/ListUsuarios';
+import ListEmpleados from './pages/ListEmpleados';
+
+
+import AddEmpleado from './pages/AddEmpleado';
+import EditEmpleado from './pages/EditEmpleado';
+
 import AddContacto from './pages/AddContacto';
 import EditContacto from './pages/EditContacto';
 import AddUsuario from './pages/AddUsuario';
@@ -43,6 +49,16 @@ function App() {
           <Route path="/editempresa/:id" element={<EditEmpresa />} exact>
             {" "}
           </Route> 
+          <Route path="/empleados/:id" element={<ListEmpleados/>} exact>
+            {" "}
+          </Route> 
+          <Route path="/addempleado" element={<AddEmpleado />} exact>
+            {" "}
+          </Route> 
+          <Route path="/editempleado/:id" element={<EditEmpleado />} exact>
+            {" "}
+          </Route> 
+                         
           <Route path="/contactos" element={<ListContactos/>} exact>
             {" "}
           </Route> 
