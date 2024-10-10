@@ -233,7 +233,7 @@ const Header = () => {
                 data-bs-toggle="dropdown"
               >
                 <img
-                  src="img/avatars/avatar.jpg"
+                  src="/img/avatars/avatar.jpg"
                   className="avatar img-fluid rounded me-1"
                   alt="Charles Hall"
                 />{" "}
