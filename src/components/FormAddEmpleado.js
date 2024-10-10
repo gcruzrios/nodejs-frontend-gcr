@@ -71,7 +71,7 @@ const FormAddEmpleado = () => {
             <option value="Temporal">Temporal</option>
             <option value="Fijo">Fijo</option>
             
-          </select>l
+          </select>
 
         </div>
         <div className="card-body">
