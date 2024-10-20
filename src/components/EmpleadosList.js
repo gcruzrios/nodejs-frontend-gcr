@@ -84,7 +84,7 @@ const EmpleadoList = () => {
                       <th >Puesto</th>
                       <th >Salario</th>
                       <th >Tipo Contrato</th>
-                      <th >Estado</th>
+                     
 											<th>Actions</th>
 										</tr>
 									</thead>
@@ -97,8 +97,8 @@ const EmpleadoList = () => {
                                      
                       <td>{empleado.puesto}</td>
                       <td>{empleado.salario}</td>
-											<td>{empleado.tcontrato}</td>    
-                      <td>{empleado.estatus}</td>             
+											<td>{empleado.tipo_contrato}</td>    
+                                   
 											<td class="table-action">
 												<Link to={`/editempleado/${empleado._id}`} className="btn btn-info">Editar</Link>{" "}
 												<button className="btn btn-danger" onClick={()=>eliminar(empleado._id)}> Borrar</button>

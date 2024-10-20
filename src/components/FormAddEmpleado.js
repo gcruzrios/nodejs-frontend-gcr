@@ -20,7 +20,7 @@ const FormAddEmpleado = () => {
    const handleAdd = async (e) => {
         e.preventDefault();
     
-        const empleado = { nombre, email, telefono, id_empresa, puesto, salario,tipo_contrato };
+        const empleado = { nombre, email, telefono, id_empresa, puesto, salario, tipo_contrato };
     
         console.log(empleado);
     
@@ -39,7 +39,10 @@ const FormAddEmpleado = () => {
             icon: "success",
           });
     
-          window.location.href = "/empleados/"+id_empresa;
+         // window.location.href = `/empleados/${id_empresa}`;
+          window.location.href = "/empleados/"+id_empresa
+
+
         }
       };
   return (
