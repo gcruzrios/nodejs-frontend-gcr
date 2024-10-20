@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import FormContacto from "../components/FormContacto";
+import FormEmpleado from "../components/FormEmpleado";
 
 const EditEmpleado = () => {
   return (
@@ -14,7 +14,7 @@ const EditEmpleado = () => {
 
         <div className="main">
           <Header />
-          <FormContacto />
+          <FormEmpleado />
 
           <Footer />
         </div>

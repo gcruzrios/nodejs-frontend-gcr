@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import EmpleadoList from '../components/EmpleadosList';
-const ListContactos = () => {
+const ListEmpleados = () => {
   return (
     <div>
 
@@ -22,4 +22,4 @@ const ListContactos = () => {
   )
 }
 
-export default ListContactos
+export default ListEmpleados
