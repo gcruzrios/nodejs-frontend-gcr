@@ -8,12 +8,12 @@ const EmpleadoList = () => {
   const [empleados, setEmpleados] = useState([]);
   const { id } = useParams();
 
-
+  localStorage.setItem('id_empresa', id);
  
 
 
   const peticionGetEmpleados = async () => {
-    //console.log("en petición get")         
+    console.log("en petición get")         
     await axios.get(`/api/empleado/obtenerempleados/${id}`).then((response) => {
     
       setEmpleados(response.data);
@@ -89,7 +89,7 @@ const EmpleadoList = () => {
 										</tr>
 									</thead>
 									<tbody>
-                  {/* {empleados.map((empleado) => ( 
+                  {empleados.map((empleado) => ( 
 										<tr  key={empleado._id}>
 											<td>{empleado.nombre}</td>
                       <td>{empleado.email}</td>
@@ -104,7 +104,7 @@ const EmpleadoList = () => {
 												<button className="btn btn-danger" onClick={()=>eliminar(empleado._id)}> Borrar</button>
 											</td>
 										</tr>
-									   ))}  */}
+									   ))}  
 									</tbody>
 								</table>
 							</div>

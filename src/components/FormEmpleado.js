@@ -19,7 +19,7 @@ const FormEmpleado = () => {
             
           </div>
           <div className="row">
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-10">
 
             { location.pathname==="/addempleado" ? <FormAddEmpleado /> : <FormEditEmpleado />}  
             </div>

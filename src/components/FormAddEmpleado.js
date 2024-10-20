@@ -11,16 +11,16 @@ const FormAddEmpleado = () => {
     const [telefono, setTelefono] = useState("");
     
     const [puesto, setPuesto] = useState("");
-    const [salario, setSalario] = useState("");
+    const [salario, setSalario] = useState(0);
     const [tipo_contrato, setTipo_contrato] = useState("");
-    const [estatus, setEstatus] = useState("");
+    const [estatus, setEstatus] = useState(true);
 
-    const { id_empresa } = useParams();
-    
+    const id_empresa = localStorage.getItem('id_empresa');
+
    const handleAdd = async (e) => {
         e.preventDefault();
     
-        const empleado = { nombre, email, telefono, id_empresa, puesto, salario,tipo_contrato,estatus };
+        const empleado = { nombre, email, telefono, id_empresa, puesto, salario,tipo_contrato };
     
         console.log(empleado);
     
@@ -39,7 +39,7 @@ const FormAddEmpleado = () => {
             icon: "success",
           });
     
-          window.location.href = "/usuarios";
+          window.location.href = "/empleados/"+id_empresa;
         }
       };
   return (
@@ -78,8 +78,8 @@ const FormAddEmpleado = () => {
           {/* <input type="text" className="form-control" placeholder="Estado" onChange={(e) => setEstado(e.target.value)} /> */}
           <select className="form-select mb-3" onChange={(e) => setEstatus(e.target.value)}>
             <option selected>Escoga el Estado</option>
-            <option value="true">Activo</option>
-            <option value="false">Inactivo</option>
+            <option value={true}>Activo</option>
+            <option value={false}>Inactivo</option>
             
           </select>
         
@@ -100,7 +100,7 @@ const FormAddEmpleado = () => {
 
             <button className="btn btn-lg btn-primary" onClick={handleAdd} >Guardar</button>
             {" "}
-            <Link to="/usuarios" className="btn btn-lg btn-secondary">Volver</Link>
+            <Link to= {`/empleados/${id_empresa}`} className="btn btn-lg btn-secondary">Volver</Link>
         </div>
 
       </div>
