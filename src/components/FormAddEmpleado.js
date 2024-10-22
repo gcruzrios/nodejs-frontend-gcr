@@ -12,7 +12,7 @@ const FormAddEmpleado = () => {
     
     const [puesto, setPuesto] = useState("");
     const [salario, setSalario] = useState(0);
-    const [tipo_contrato, setTipo_contrato] = useState("");
+    const [tcontrato, setTcontrato] = useState("");
     const [estatus, setEstatus] = useState(true);
 
     const id_empresa = localStorage.getItem('id_empresa');
@@ -20,7 +20,7 @@ const FormAddEmpleado = () => {
    const handleAdd = async (e) => {
         e.preventDefault();
     
-        const empleado = { nombre, email, telefono, id_empresa, puesto, salario, tipo_contrato };
+        const empleado = { nombre, email, telefono, id_empresa, puesto, salario, tcontrato };
     
         console.log(empleado);
     
@@ -68,7 +68,7 @@ const FormAddEmpleado = () => {
         </div>
         <div className="card-body">
           {/* <input type="text" className="form-control" placeholder="Tipo Contrato" onChange={(e) => setTcontrato(e.target.value)} /> */}
-          <select className="form-select mb-3" onChange={(e) => setTipo_contrato(e.target.value)}>
+          <select className="form-select mb-3" onChange={(e) => setTcontrato(e.target.value)}>
             <option selected>Escoga tipo de contrato</option>
             <option value="Pasante">Pasante</option>
             <option value="Temporal">Temporal</option>

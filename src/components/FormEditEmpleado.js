@@ -14,7 +14,7 @@ const FormEditEmpleado = () => {
 
   const [puesto, setPuesto] = useState("");
   const [salario, setSalario] = useState(0);
-  const [tipo_contrato, setTipo_contrato] = useState("");
+  const [tcontrato, setTcontrato] = useState("");
   const [estatus, setEstatus] = useState(true);
 
   const { id } = useParams();
@@ -34,7 +34,7 @@ const FormEditEmpleado = () => {
     setPuesto(mensaje[0].puesto);
     
     setSalario(mensaje[0].salario);
-    setTipo_contrato(mensaje[0].tipo_contrato);
+    setTcontrato(mensaje[0].tcontrato);
     setEstatus(mensaje[0].estatus);
     
   };
@@ -51,7 +51,7 @@ const FormEditEmpleado = () => {
     //    const token = data.Token;
     //    localStorage.setItem("Token", token);
 
-    const empleado = { nombre, telefono, email, id_empresa, puesto, salario, tipo_contrato, estatus  };
+    const empleado = { nombre, telefono, email, id_empresa, puesto, salario, tcontrato, estatus  };
     console.log(empleado);
     const response = await axios.put(
       `/api/empleado/actualizarempleado/${id}`,
@@ -122,7 +122,7 @@ const FormEditEmpleado = () => {
         </div>
         <div className="card-body">
           {/* <input type="text" className="form-control" placeholder="Tipo Contrato" onChange={(e) => setTcontrato(e.target.value)} /> */}
-          <select className="form-select mb-3" onChange={(e) => setTipo_contrato(e.target.value)}>
+          <select className="form-select mb-3" value={tcontrato} onChange={(e) => setTcontrato(e.target.value)}>
             <option selected>Escoga tipo de contrato</option>
             <option value="Pasante">Pasante</option>
             <option value="Temporal">Temporal</option>
