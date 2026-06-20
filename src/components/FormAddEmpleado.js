@@ -1,117 +1,175 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Users, ArrowLeft, Save } from "react-feather";
+
+const CONTRATOS = ["Pasante", "Temporal", "Fijo"];
 
 const FormAddEmpleado = () => {
+  const navigate = useNavigate();
+  const { empresaId } = useParams();
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    nombre: "", email: "", telefono: "",
+    puesto: "", salario: "", tipo_contrato: "", estatus: true,
+  });
 
-    const [nombre, setNombre] = useState("");
-    const [email, setEmail] = useState("");
-    const [telefono, setTelefono] = useState("");
-    
-    const [puesto, setPuesto] = useState("");
-    const [salario, setSalario] = useState(0);
-    const [tcontrato, setTcontrato] = useState("");
-    const [estatus, setEstatus] = useState(true);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: name === "estatus" ? value === "true" : value });
+  };
 
-    const id_empresa = localStorage.getItem('id_empresa');
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    if (!form.nombre || !form.email || !form.puesto || !form.tcontrato) {
+      Swal.fire({ text: "Complete todos los campos requeridos.", icon: "warning" });
+      return;
+    }
+    try {
+      setLoading(true);
+      await axios.post("/api/empleados", { ...form, id_empresa: empresaId });
+      Swal.fire({ text: "Empleado registrado con éxito.", icon: "success", timer: 1500, showConfirmButton: false });
+      navigate(`/empleados/${empresaId}`);
+    } catch {
+      Swal.fire({ text: "Error al registrar el empleado.", icon: "error" });
+    } finally {
+      setLoading(false);
+    }
+  };
 
-   const handleAdd = async (e) => {
-        e.preventDefault();
-    
-        const empleado = { nombre, email, telefono, id_empresa, puesto, salario, tcontrato };
-    
-        console.log(empleado);
-    
-        const response = await axios.post(`/api/empleado/agregarempleado`, empleado);
-        const mensaje = response.data;
-        console.log(mensaje);
-    
-        if (mensaje === null) {
-          Swal.fire({
-            text: "Error insertando empleado..",
-            icon: "error",
-          });
-        } else {
-          Swal.fire({
-            text: "empleado insertada con éxito..",
-            icon: "success",
-          });
-    
-         // window.location.href = `/empleados/${id_empresa}`;
-          window.location.href = "/empleados/"+id_empresa
-
-
-        }
-      };
   return (
-    <div>
-         <div className="card">
-        <div className="card-header">
-          <h5 className="card-title mb-0">Ingrese los datos de la empleado</h5>
-        </div>
-        <div className="card-body">
-          <input type="text" className="form-control" placeholder="Nombre" onChange={(e) => setNombre(e.target.value)}/>
-        </div>
-        <div className="card-body">
-          <input type="text" className="form-control" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className="card-body">
-          <input type="text" className="form-control" placeholder="Telefóno" onChange={(e) => setTelefono(e.target.value)} />
-        </div>
-        <div className="card-body">
-          <input type="text" className="form-control" placeholder="Puesto" onChange={(e) => setPuesto(e.target.value)}/>
-        </div>
-        <div className="card-body">
-          <input type="text" className="form-control" placeholder="Salario" onChange={(e) => setSalario(e.target.value)} />
-        </div>
-        <div className="card-body">
-          {/* <input type="text" className="form-control" placeholder="Tipo Contrato" onChange={(e) => setTcontrato(e.target.value)} /> */}
-          <select className="form-select mb-3" onChange={(e) => setTcontrato(e.target.value)}>
-            <option selected>Escoga tipo de contrato</option>
-            <option value="Pasante">Pasante</option>
-            <option value="Temporal">Temporal</option>
-            <option value="Fijo">Fijo</option>
-            
-          </select>
-
-        </div>
-        <div className="card-body">
-          {/* <input type="text" className="form-control" placeholder="Estado" onChange={(e) => setEstado(e.target.value)} /> */}
-          <select className="form-select mb-3" onChange={(e) => setEstatus(e.target.value)}>
-            <option selected>Escoga el Estado</option>
-            <option value={true}>Activo</option>
-            <option value={false}>Inactivo</option>
-            
-          </select>
-        
-        </div>
-
-    
-
-        
-       
-
-
-
-
-        <div className="card-body">
-        </div>
-      
-        <div className="card-body">
-
-            <button className="btn btn-lg btn-primary" onClick={handleAdd} >Guardar</button>
-            {" "}
-            <Link to= {`/empleados/${id_empresa}`} className="btn btn-lg btn-secondary">Volver</Link>
-        </div>
-
+    <div className="card shadow-sm">
+      <div className="card-header d-flex align-items-center gap-2">
+        <Users size={18} className="text-primary" />
+        <h5 className="card-title mb-0">Nuevo Empleado</h5>
       </div>
+      <div className="card-body">
+        <form onSubmit={handleAdd}>
+          <div className="row">
+            <div className="col-md-6 mb-3">
+              <label className="form-label fw-semibold">
+                Nombre <span className="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="nombre"
+                placeholder="Nombre completo"
+                value={form.nombre}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="col-md-6 mb-3">
+              <label className="form-label fw-semibold">
+                Email <span className="text-danger">*</span>
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                name="email"
+                placeholder="correo@empleado.com"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
 
-   
+          <div className="row">
+            <div className="col-md-6 mb-3">
+              <label className="form-label fw-semibold">Teléfono</label>
+              <input
+                type="tel"
+                className="form-control"
+                name="telefono"
+                placeholder="+(502) 0000-0000"
+                value={form.telefono}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="col-md-6 mb-3">
+              <label className="form-label fw-semibold">
+                Puesto <span className="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="puesto"
+                placeholder="Ej: Desarrollador, Gerente..."
+                value={form.puesto}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
 
+          <div className="row">
+            <div className="col-md-4 mb-3">
+              <label className="form-label fw-semibold">Salario</label>
+              <div className="input-group">
+                <span className="input-group-text">Q</span>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="salario"
+                  placeholder="0.00"
+                  min="0"
+                  value={form.salario}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="col-md-4 mb-3">
+              <label className="form-label fw-semibold">
+                Tipo de Contrato <span className="text-danger">*</span>
+              </label>
+              <select
+                className="form-select"
+                name="tipo_contrato"
+                value={form.tipo_contrato}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Seleccione...</option>
+                {CONTRATOS.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+            </div>
+            <div className="col-md-4 mb-4">
+              <label className="form-label fw-semibold">Estado</label>
+              <select
+                className="form-select"
+                name="estatus"
+                value={String(form.estatus)}
+                onChange={handleChange}
+              >
+                <option value="true">Activo</option>
+                <option value="false">Inactivo</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="d-flex gap-2">
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? (
+                <span className="spinner-border spinner-border-sm me-1" />
+              ) : (
+                <Save size={15} className="me-1" />
+              )}
+              Guardar
+            </button>
+            <Link to={`/empleados/${empresaId}`} className="btn btn-outline-secondary">
+              <ArrowLeft size={15} className="me-1" />
+              Volver
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default FormAddEmpleado
+export default FormAddEmpleado;

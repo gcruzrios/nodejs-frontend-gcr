@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-//axios.defaults.baseURL = 'http://localhost:8000'
-axios.defaults.baseURL = 'https://nodejs-backend-09506c1e100e.herokuapp.com/'
+axios.defaults.baseURL = 'http://localhost:8000'
+//axios.defaults.baseURL = 'https://nodejs-backend-09506c1e100e.herokuapp.com/'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

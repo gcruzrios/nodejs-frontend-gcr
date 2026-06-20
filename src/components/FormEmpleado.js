@@ -1,36 +1,23 @@
 import React from "react";
-
-import { useLocation } from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
 import FormAddEmpleado from "./FormAddEmpleado";
 import FormEditEmpleado from "./FormEditEmpleado";
 
 const FormEmpleado = () => {
-
   const location = useLocation();
-  console.log(location.pathname);
+  const isAdd = location.pathname.startsWith("/addempleado");
 
   return (
-    <div>
-   <main className="content">
-        <div className="container-fluid p-0">
-          <div className="mb-3">
-            <h1 className="h3 d-inline align-middle">Formularios de Empleados</h1>
-            
-          </div>
-          <div className="row">
-            <div className="col-12 col-lg-10">
-
-            { location.pathname==="/addempleado" ? <FormAddEmpleado /> : <FormEditEmpleado />}  
-            </div>
-
-            
+    <main className="content">
+      <div className="container-fluid p-0">
+        <div className="row">
+          <div className="col-12 col-lg-10">
+            {isAdd ? <FormAddEmpleado /> : <FormEditEmpleado />}
           </div>
         </div>
-      </main>
+      </div>
+    </main>
+  );
+};
 
-    </div>
-  )
-}
-
-export default FormEmpleado
+export default FormEmpleado;
